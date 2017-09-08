@@ -1,7 +1,7 @@
 #ifndef DRUNKARD_H
 #define DRUNKARD_H
 
-#include <BaseGameEntity.h>
+#include "BaseGameEntity.h"
 
 
 class Drunkard : public BaseGameEntity
@@ -9,6 +9,7 @@ class Drunkard : public BaseGameEntity
     public:
         Drunkard();
         virtual ~Drunkard();
+        private:
 
     protected:
 

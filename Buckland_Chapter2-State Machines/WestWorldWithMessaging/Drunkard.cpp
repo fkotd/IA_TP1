@@ -1,11 +1,14 @@
 #include "Drunkard.h"
 
-Drunkard::Drunkard()
+void Drunkard::Drunkard()
 {
-    //ctor
+
+}
+void Drunkard::~Drunkard()
+{
+
 }
 
-Drunkard::~Drunkard()
+void Drunkard::Update()
 {
-    //dtor
 }

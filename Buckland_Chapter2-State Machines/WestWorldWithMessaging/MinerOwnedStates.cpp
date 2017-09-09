@@ -7,6 +7,7 @@
 #include "MessageTypes.h"
 #include "../../Common/Time/CrudeTimer.h"
 #include "EntityNames.h"
+#include "../../Common/misc/utils.h"
 
 #include <iostream>
 using std::cout;
@@ -251,8 +252,27 @@ void QuenchThirst::Exit(Miner* pMiner)
 
 bool QuenchThirst::OnMessage(Miner* pMiner, const Telegram& msg)
 {
-  //send msg to global message handler
-  return false;
+  SetTextColor(BACKGROUND_RED|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
+
+   switch(msg.Msg)
+   {
+   case Msg_Drunkard:
+
+     cout << "\nMessage handled by " << GetNameOfEntity(pMiner->ID())
+     << " at time: " << Clock->GetCurrentTime();
+
+     SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
+
+     cout << "\n" << GetNameOfEntity(pMiner->ID())
+          << ": Oh shit !";
+
+     pMiner->GetFSM()->ChangeState(Quarrel::Instance());
+
+     return true;
+
+   }//end switch
+
+   return false; //send message to global message handler
 }
 
 //------------------------------------------------------------------------EatStew
@@ -287,6 +307,85 @@ bool EatStew::OnMessage(Miner* pMiner, const Telegram& msg)
 {
   //send msg to global message handler
   return false;
+}
+
+//--------------------------------------------------------------------------Quarrel
+Quarrel* Quarrel::Instance()
+{
+  static Quarrel instance;
+
+  return &instance;
+}
+
+void Quarrel::Enter(Miner* pMiner) //Enter quarrel mode with drunkard
+{
+  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Hey, ya wanna fight me?";
+}
+
+void Quarrel::Execute(Miner* pMiner) //quarrel with drunkard
+{
+  switch(RandInt(0,2))
+  {
+  case 0:
+
+    cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": Shaddup you !";
+
+    break;
+
+  case 1:
+
+    cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": Dun' talk back !";
+
+    break;
+
+  case 2:
+
+    cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": Ya li'lle shit !";
+
+    break;
+  }
+  pMiner->IncreaseFatigue();
+    //
+  if (pMiner->Fatigued())
+  {
+     cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": "
+          << "Aah Ah'm tired now ! Ah'm out.";
+
+     pMiner->GetFSM()->ChangeState(GoHomeAndSleepTilRested::Instance());
+  }
+
+}
+
+void Quarrel::Exit(Miner* pMiner) //
+{
+  SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
+  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Going out of the saloon.";
+}
+
+
+bool Quarrel::OnMessage(Miner* pMiner, const Telegram& msg)
+{
+SetTextColor(BACKGROUND_RED|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
+
+   switch(msg.Msg)
+   {
+   case Msg_Drunkard:
+
+     cout << "\nMessage handled by " << GetNameOfEntity(pMiner->ID())
+     << " at time: " << Clock->GetCurrentTime();
+
+     SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
+
+     cout << "\n" << GetNameOfEntity(pMiner->ID())
+          << ": Bye loser !";
+
+     pMiner->GetFSM()->RevertToPreviousState();
+
+     return true;
+
+   }//end switch
+
+   return false; //send message to global message handler
 }
 
 

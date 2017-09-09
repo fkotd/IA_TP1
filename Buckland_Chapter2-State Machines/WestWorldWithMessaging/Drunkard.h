@@ -17,6 +17,17 @@ const int QuarrelThreshold   = 3;
 
 class Drunkard : public BaseGameEntity
 {
+    private:
+        //an instance of the state machine class
+        StateMachine<Drunkard>* m_pStateMachine;
+        location_type m_Location;
+        //the higher the value, the more drunk the drunkard
+        int m_iAlcohol;
+        //the higher the value, the more tired the drunkard
+        int m_iFatigue;
+        //the higher the value, the more angry the drunkard
+        int m_iAnger;
+
     public:
         Drunkard(int id):m_Location(saloon),
                             m_iAlcohol(0),
@@ -39,16 +50,23 @@ class Drunkard : public BaseGameEntity
 
         StateMachine<Drunkard>* GetFSM()const{return m_pStateMachine;}
 
-    private:
-        //an instance of the state machine class
-        StateMachine<Drunkard>* m_pStateMachine;
-        location_type m_Location;
-        //the higher the value, the more drunk the drunkard
-        int m_iAlcohol;
-        //the higher the value, the more tired the drunkard
-        int m_iFatigue;
-        //the higher the value, the more angry the drunkard
-        int m_iAnger;
+
+        //-------------------------------------------------------------accessors
+
+        location_type Location()const{return m_Location;}
+        void ChangeLocation(location_type loc){m_Location=loc;}
+
+        bool Drunk() const;
+        void DecreaseAlcohol(){m_iAlcohol -= 1;}
+        void IncreaseAlcohol(){m_iAlcohol += 1;}
+
+        bool Fatigued() const;
+        void DecreaseFatigue(){m_iFatigue -= 1;}
+        void IncreaseFatigue(){m_iFatigue += 1;}
+
+        bool TooAngry() const;
+        void DecreaseAnger(){m_iAnger -= 1;}
+        void IncreaseAnger(){m_iAnger += 1;}
 
 };
 

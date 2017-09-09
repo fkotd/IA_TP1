@@ -55,10 +55,10 @@ public:
 
 
   //this must be implemented
-  void          Update();
+  void Update();
 
   //so must this
-  virtual bool  HandleMessage(const Telegram& msg);
+  virtual bool HandleMessage(const Telegram& msg);
 
   StateMachine<MinersWife>* GetFSM()const{return m_pStateMachine;}
 

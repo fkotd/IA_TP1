@@ -173,6 +173,33 @@ public:
 };
 
 
+//------------------------------------------------------------------------
+//
+//
+//------------------------------------------------------------------------
+class Quarrel : public State<Miner>
+{
+private:
+
+  Quarrel(){}
+
+  //copy ctor and assignment should be private
+  Quarrel(const Quarrel&);
+  Quarrel& operator=(const Quarrel&);
+
+public:
+
+  //this is a singleton
+  static Quarrel* Instance();
+
+  virtual void Enter(Miner* miner);
+
+  virtual void Execute(Miner* miner);
+
+  virtual void Exit(Miner* miner);
+
+  virtual bool OnMessage(Miner* agent, const Telegram& msg);
+};
 
 
 #endif

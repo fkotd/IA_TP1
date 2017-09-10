@@ -100,20 +100,20 @@ class TakeANap : public State<Drunkard>
 //  Quarrel with miner will inscrease the anger level. If it get too high
 //  drunkard will be throw out by the owner.
 //------------------------------------------------------------------------
-class Quarrel : public State<Drunkard>
+class QuarrelDrunkard : public State<Drunkard>
 {
     private:
 
-        Quarrel(){}
+        QuarrelDrunkard(){}
 
         //copy ctor and assignment should be private
-        Quarrel(const Quarrel&);
-        Quarrel& operator=(const Quarrel&);
+        QuarrelDrunkard(const QuarrelDrunkard&);
+        QuarrelDrunkard& operator=(const QuarrelDrunkard&);
 
     public:
 
         //this is a singleton
-        static Quarrel* Instance();
+        static QuarrelDrunkard* Instance();
 
         virtual void Enter(Drunkard* drunkard);
 

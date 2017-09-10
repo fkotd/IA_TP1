@@ -5,12 +5,12 @@
 #include "Locations.h"
 #include "../../Common/fsm/StateMachine.h"
 #include "../../Common/misc/ConsoleUtils.h"
-#include "DrunkardOwnedStates.h";
+#include "DrunkardOwnedStates.h"
 
 //the amount of alcohol a drunkard must have before he do odd things
 const int AlcoholLevel       = 5;
 //above this value a drunkard is sleepy
-const int TirednessThreshold = 5;
+const int FatigueLevel = 5;
 //above this value a quarrel will stop
 const int QuarrelThreshold   = 3;
 
@@ -37,7 +37,7 @@ class Drunkard : public BaseGameEntity
         {
             m_pStateMachine = new StateMachine<Drunkard>(this);
 
-            //m_pStateMachine->SetCurrentState(HaveADrink::Instance());
+            m_pStateMachine->SetCurrentState(HaveADrink::Instance());
         }
 
         ~Drunkard(){delete m_pStateMachine;}

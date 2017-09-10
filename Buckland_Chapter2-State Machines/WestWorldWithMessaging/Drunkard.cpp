@@ -1,4 +1,4 @@
-#include "Drunkard.h"
+#include "DRUNKARD.H"
 
 bool Drunkard::HandleMessage(const Telegram& msg)
 {
@@ -20,7 +20,7 @@ bool Drunkard::Drunk() const
 
 bool Drunkard::Fatigued() const
 {
-    return m_iFatigue > TirednessThreshold;
+    return m_iFatigue > FatigueLevel;
 }
 
 bool Drunkard::TooAngry() const

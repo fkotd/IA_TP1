@@ -4,6 +4,7 @@
 #include "Locations.h"
 #include "Miner.h"
 #include "MinersWife.h"
+#include "DRUNKARD.H"
 #include "EntityManager.h"
 #include "MessageDispatcher.h"
 #include "../../Common/misc/ConsoleUtils.h"
@@ -28,15 +29,20 @@ int main()
   //create his wife
   MinersWife* Elsa = new MinersWife(ent_Elsa);
 
+  //create a drunkard
+  Drunkard* Sam = new Drunkard(ent_Sam);
+
   //register them with the entity manager
   EntityMgr->RegisterEntity(Bob);
   EntityMgr->RegisterEntity(Elsa);
+  EntityMgr->RegisterEntity(Sam);
 
-  //run Bob and Elsa through a few Update calls
+  //run Bob, Elsa and Sam through a few Update calls
   for (int i=0; i<30; ++i)
   {
     Bob->Update();
     Elsa->Update();
+    Sam->Update();
 
     //dispatch any delayed messages
     Dispatch->DispatchDelayedMessages();
@@ -47,6 +53,7 @@ int main()
   //tidy up
   delete Bob;
   delete Elsa;
+  delete Sam;
 
   //wait for a keypress before exiting
   PressAnyKeyToContinue();

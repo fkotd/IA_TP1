@@ -4,7 +4,7 @@
 #include "Locations.h"
 #include "Miner.h"
 #include "MinersWife.h"
-#include "DRUNKARD.H"
+#include "Drunkard.h"
 #include "EntityManager.h"
 #include "MessageDispatcher.h"
 #include "../../Common/misc/ConsoleUtils.h"
@@ -47,7 +47,7 @@ int main()
     //dispatch any delayed messages
     Dispatch->DispatchDelayedMessages();
 
-    Sleep(800);
+    Sleep(100);
   }
 
   //tidy up

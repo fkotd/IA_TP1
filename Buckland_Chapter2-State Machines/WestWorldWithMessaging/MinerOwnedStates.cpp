@@ -246,7 +246,8 @@ void QuenchThirst::Execute(Miner* pMiner)
 
 void QuenchThirst::Exit(Miner* pMiner)
 {
-  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Leaving the saloon, feelin' good";
+  SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
+  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Need to do somethin'!";
 }
 
 
@@ -256,7 +257,7 @@ bool QuenchThirst::OnMessage(Miner* pMiner, const Telegram& msg)
 
    switch(msg.Msg)
    {
-   case Msg_Drunkard:
+   case Msg_SomeoneWantToFight:
 
      cout << "\nMessage handled by " << GetNameOfEntity(pMiner->ID())
      << " at time: " << Clock->GetCurrentTime();
@@ -264,7 +265,15 @@ bool QuenchThirst::OnMessage(Miner* pMiner, const Telegram& msg)
      SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
 
      cout << "\n" << GetNameOfEntity(pMiner->ID())
-          << ": Oh shit !";
+          << ": Damn the drunkard !";
+
+    //message pour drunkard
+    Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,     //time delay
+                              pMiner->ID(),             //ID of sender
+                              ent_Sam,                 //ID of recipient
+                              Msg_MinerHereToFight,    //the message
+                              NO_ADDITIONAL_INFO);
+
 
      pMiner->GetFSM()->ChangeState(Quarrel::Instance());
 
@@ -344,7 +353,7 @@ void Quarrel::Execute(Miner* pMiner) //quarrel with drunkard
 
     break;
   }
-  pMiner->IncreaseFatigue();
+  //pMiner->IncreaseFatigue();
     //
   if (pMiner->Fatigued())
   {
@@ -359,7 +368,7 @@ void Quarrel::Execute(Miner* pMiner) //quarrel with drunkard
 void Quarrel::Exit(Miner* pMiner) //
 {
   SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
-  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Going out of the saloon.";
+  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Peace finally.";
 }
 
 
@@ -369,7 +378,7 @@ SetTextColor(BACKGROUND_RED|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
 
    switch(msg.Msg)
    {
-   case Msg_Drunkard:
+   case Msg_DrunkardStopQuarrel:
 
      cout << "\nMessage handled by " << GetNameOfEntity(pMiner->ID())
      << " at time: " << Clock->GetCurrentTime();

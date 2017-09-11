@@ -1,6 +1,6 @@
 #include "DrunkardOwnedStates.h"
 #include "../../Common/FSM/State.h"
-#include "DRUNKARD.H"
+#include "Drunkard.h"
 #include "Locations.h"
 #include "../../Common/Messaging/Telegram.h"
 #include "MessageDispatcher.h"
@@ -118,12 +118,6 @@ void DoOddThings::Execute(Drunkard* pDrunkard)
     }
     else
     {
-        //send a message to the miner, check if he is in the saloon
-        Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY, //time delay
-                              pDrunkard->ID(),          //ID of sender
-                              ent_Miner_Bob,            //ID of recipient
-                              Msg_SomeoneWantToFight,   //the message
-                              NO_ADDITIONAL_INFO);
 
         SetTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN);
         //drunkrard is going to sing
@@ -139,6 +133,13 @@ void DoOddThings::Execute(Drunkard* pDrunkard)
                 cout << "\n" << GetNameOfEntity(pDrunkard->ID()) << ": " << "Miner's lady, stranger to blue whiskey...";
                 break;
         }
+
+        //send a message to the miner, check if he is in the saloon
+        Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY, //time delay
+                              pDrunkard->ID(),          //ID of sender
+                              ent_Miner_Bob,            //ID of recipient
+                              Msg_SomeoneWantToFight,   //the message
+                              NO_ADDITIONAL_INFO);
     }
 }
 
@@ -276,7 +277,7 @@ void QuarrelDrunkard::Execute(Drunkard* pDrunkard)
                                 Msg_DrunkardStopQuarrel,  //the message
                                 NO_ADDITIONAL_INFO);
 
-        //SetTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN);
+        SetTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN);
 
         pDrunkard->GetFSM()->ChangeState(SoberUpOutside::Instance());
     }

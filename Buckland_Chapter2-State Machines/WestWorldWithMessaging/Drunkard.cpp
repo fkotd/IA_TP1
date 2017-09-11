@@ -1,4 +1,4 @@
-#include "DRUNKARD.H"
+#include "Drunkard.h"
 
 bool Drunkard::HandleMessage(const Telegram& msg)
 {

@@ -455,12 +455,13 @@
 	<cassert>
 	<string>
 
-1504903738 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\main.cpp
+1505061486 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\main.cpp
 	<fstream>
 	<time.h>
 	"Locations.h"
 	"Miner.h"
 	"MinersWife.h"
+	"DRUNKARD.H"
 	"EntityManager.h"
 	"MessageDispatcher.h"
 	"../../Common/misc/ConsoleUtils.h"
@@ -523,7 +524,7 @@
 	"../../Common/misc/ConsoleUtils.h"
 	"../../Common/Messaging/Telegram.h"
 
-1504903732 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\entitynames.h
+1505062092 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\entitynames.h
 	<string>
 
 1504903732 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\messagedispatcher.cpp
@@ -537,13 +538,13 @@
 	<iostream>
 	<fstream>
 
-1504903732 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\messagetypes.h
+1505095184 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\messagetypes.h
 	<string>
 
 1504903732 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\miner.cpp
 	"Miner.h"
 
-1504903734 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\minerownedstates.cpp
+1505061666 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\minerownedstates.cpp
 	"MinerOwnedStates.h"
 	"../../Common/FSM/State.h"
 	"Miner.h"
@@ -559,7 +560,7 @@
 1504903734 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\minerswife.cpp
 	"MinersWife.h"
 
-1504903734 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\minerswifeownedstates.cpp
+1505061714 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\minerswifeownedstates.cpp
 	"MinersWifeOwnedStates.h"
 	"MinerOwnedStates.h"
 	"MinersWife.h"
@@ -571,20 +572,31 @@
 	<iostream>
 	<fstream>
 
-1504999468 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkard.cpp
-	"Drunkard.h"
+1505095474 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkard.cpp
+	"DRUNKARD.H"
 
-1504998238 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkard.h
+1505088076 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkard.h
 	"BaseGameEntity.h"
 	"Locations.h"
 	"../../Common/fsm/StateMachine.h"
 	"../../Common/misc/ConsoleUtils.h"
 	"DrunkardOwnedStates.h"
 
-1504915134 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkardownedstates.cpp
+1505095232 source:f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkardownedstates.cpp
 	"DrunkardOwnedStates.h"
+	"../../Common/FSM/State.h"
+	"DRUNKARD.H"
+	"Locations.h"
+	"../../Common/Messaging/Telegram.h"
+	"MessageDispatcher.h"
+	"MessageTypes.h"
+	"../../Common/Time/CrudeTimer.h"
+	"EntityNames.h"
+	"../../Common/misc/utils.h"
+	<iostream>
+	<fstream>
 
-1504989412 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkardownedstates.h
+1505061562 f:\aut17\int artificielle\_tp1git\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\drunkardownedstates.h
 	"../../Common/FSM/State.h"
 
 1504993214 source:d:\uqac\ia\iatp\ia_tp1\buckland_chapter2-state machines\westworldwithmessaging\basegameentity.cpp

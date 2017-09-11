@@ -157,10 +157,10 @@ void GoHomeAndSleepTilRested::Enter(Miner* pMiner)
     pMiner->ChangeLocation(shack);
 
     //let the wife know I'm home
-    Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY, //time delay
-                              pMiner->ID(),        //ID of sender
-                              ent_Elsa,            //ID of recipient
-                              Msg_HiHoneyImHome,   //the message
+    Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,     //time delay
+                              pMiner->ID(),             //ID of sender
+                              ent_Elsa,                 //ID of recipient
+                              Msg_HiHoneyImHome,        //the message
                               NO_ADDITIONAL_INFO);
   }
 }

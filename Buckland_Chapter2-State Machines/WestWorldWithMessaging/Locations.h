@@ -7,7 +7,8 @@ enum location_type
   shack,
   goldmine,
   bank,
-  saloon
+  saloon,
+  waterTrough
 };
 
 

@@ -9,6 +9,7 @@ enum message_type
   Msg_StewReady,
   Msg_SomeoneWantToFight,
   Msg_MinerHereToFight,
+  Msg_DrunkardStopQuarrel,
 };
 
 
@@ -31,6 +32,10 @@ inline std::string MsgToStr(int msg)
   case Msg_MinerHereToFight:
 
     return "MinerHereToFight";
+
+  case Msg_DrunkardStopQuarrel:
+
+    return "DrunkardStopQuarrel";
 
   default:
 

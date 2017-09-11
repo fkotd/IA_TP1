@@ -8,9 +8,9 @@
 #include "DrunkardOwnedStates.h"
 
 //the amount of alcohol a drunkard must have before he do odd things
-const int AlcoholLevel       = 5;
+const int AlcoholLevel       = 3;
 //above this value a drunkard is sleepy
-const int FatigueLevel = 5;
+const int FatigueLevel       = 5;
 //above this value a quarrel will stop
 const int QuarrelThreshold   = 3;
 
@@ -57,16 +57,18 @@ class Drunkard : public BaseGameEntity
         void ChangeLocation(location_type loc){m_Location=loc;}
 
         bool Drunk() const;
-        void DecreaseAlcohol(){m_iAlcohol -= 1;}
-        void IncreaseAlcohol(){m_iAlcohol += 1;}
+        void DecreaseAlcohol();
+        void IncreaseAlcohol();
 
         bool Fatigued() const;
-        void DecreaseFatigue(){m_iFatigue -= 1;}
-        void IncreaseFatigue(){m_iFatigue += 1;}
+        void DecreaseFatigue();
+        void IncreaseFatigue();
 
         bool TooAngry() const;
-        void DecreaseAnger(){m_iAnger -= 1;}
-        void IncreaseAnger(){m_iAnger += 1;}
+        void DecreaseAnger();
+        void IncreaseAnger();
+
+        bool Rested() const;
 
 };
 

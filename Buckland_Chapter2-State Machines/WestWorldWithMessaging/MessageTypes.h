@@ -5,6 +5,7 @@
 
 enum message_type
 {
+  Msg_MinerOut,
   Msg_HiHoneyImHome,
   Msg_StewReady,
   Msg_SomeoneWantToFight,
@@ -17,6 +18,9 @@ inline std::string MsgToStr(int msg)
 {
   switch (msg)
   {
+   case Msg_MinerOut:
+
+    return "MinerOut";
 
   case Msg_HiHoneyImHome:
 

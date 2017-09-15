@@ -247,7 +247,7 @@ void QuenchThirst::Execute(Miner* pMiner)
 void QuenchThirst::Exit(Miner* pMiner)
 {
   SetTextColor(FOREGROUND_RED|FOREGROUND_INTENSITY);
-  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Need to do somethin'!";
+//  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Need to do somethin'!";
 }
 
 
@@ -333,6 +333,22 @@ void Quarrel::Enter(Miner* pMiner) //Enter quarrel mode with drunkard
 
 void Quarrel::Execute(Miner* pMiner) //quarrel with drunkard
 {
+    if (pMiner->Fatigued())
+  {
+     cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": "
+          << "Ooh nah ah'm tired now. Ah'm out !";
+
+    //message pour drunkard
+    Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,     //time delay
+                              pMiner->ID(),             //ID of sender
+                              ent_Sam,                 //ID of recipient
+                              Msg_MinerOut,    //the message
+                              NO_ADDITIONAL_INFO);
+
+     pMiner->GetFSM()->ChangeState(GoHomeAndSleepTilRested::Instance());
+  }
+
+
   switch(RandInt(0,2))
   {
   case 0:
@@ -355,13 +371,6 @@ void Quarrel::Execute(Miner* pMiner) //quarrel with drunkard
   }
   //pMiner->IncreaseFatigue();
     //
-  if (pMiner->Fatigued())
-  {
-     cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": "
-          << "Aah Ah'm tired now ! Ah'm out.";
-
-     pMiner->GetFSM()->ChangeState(GoHomeAndSleepTilRested::Instance());
-  }
 
 }
 

@@ -312,6 +312,25 @@ void QuarrelDrunkard::Exit(Drunkard* pDrunkard)
 
 bool QuarrelDrunkard::OnMessage(Drunkard* pDrunkard, const Telegram& msg)
 {
-    //send msg to global message handler
+    SetTextColor(BACKGROUND_RED|FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE);
+
+    switch(msg.Msg)
+    {
+        case Msg_MinerOut:
+        {
+            cout << "\nMessage handled by " << GetNameOfEntity(pDrunkard->ID()) << " at time: "
+            << Clock->GetCurrentTime();
+
+            SetTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN);
+
+            cout << "\n" << GetNameOfEntity(pDrunkard->ID()) << ": Wha? Ya out already... ?";
+
+            pDrunkard->GetFSM()->ChangeState(SoberUpOutside::Instance());
+        }
+
+        return true;
+
+    }//end switch
+
     return false;
 }
